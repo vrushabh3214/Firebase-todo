@@ -1,4 +1,3 @@
- 
 import { useEffect, useState } from "react";
 import { db } from "../Firebase";
 import {
@@ -41,8 +40,12 @@ export default function Home() {
         alert("data updated successfully");
       } else {
         // add logic
-        
-        if (todos.some((element) => element.todo.toLowerCase() === todo.toLowerCase())) {
+
+        if (
+          todos.some(
+            (element) => element.todo.toLowerCase() === todo.toLowerCase()
+          )
+        ) {
           console.error("Not working");
         } else {
           await addDoc(todoCollection, { todo: todo });
@@ -53,7 +56,7 @@ export default function Home() {
           getData();
         }
       }
-      setTodo("")
+      setTodo("");
     } catch (error) {
       console.log(error, "someting is wrong");
     }
@@ -105,14 +108,7 @@ export default function Home() {
       <div>
         {todos.map((item) => {
           return (
-            <div
-              style={{
-                border: "1px solid white",
-                padding: "10px",
-                margin: "10px",
-              }}
-              key={item.id}
-            >
+            <div key={item.id}>
               <h3>{item.todo}</h3>
               <button onClick={() => handleDelete(item.id)}>Delete</button>
               <button onClick={() => handleEdit(item)}> Edit</button>
