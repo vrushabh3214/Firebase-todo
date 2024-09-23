@@ -94,7 +94,7 @@ export default function Home() {
   };
 
   return (
-    <div className="text-center">
+    <div className="text-center mt-5 ">
       <form onSubmit={handleForm}>
         <input
           value={todo}
@@ -102,16 +102,21 @@ export default function Home() {
           type="text"
           placeholder="Add your todo..."
         />
-        <button> {isEditId ? "Update" : "Add todo"}</button>
+        <button className="ms-3 rounded">
+          {" "}
+          {isEditId ? "Update" : "Add todo"}
+        </button>
       </form>
 
       <div>
         {todos.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.id} className="d-flex justify-content-evenly">
               <h3>{item.todo}</h3>
-              <button onClick={() => handleDelete(item.id)}>Delete</button>
-              <button onClick={() => handleEdit(item)}> Edit</button>
+              <div>
+                <button className="mx-2" onClick={() => handleDelete(item.id)}>Delete</button>
+                <button className="mx-2" onClick={() => handleEdit(item)}> Edit</button>
+              </div>
             </div>
           );
         })}
