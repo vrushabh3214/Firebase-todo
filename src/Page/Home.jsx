@@ -53,6 +53,7 @@ export default function Home() {
           getData();
         }
       }
+      setTodo("")
     } catch (error) {
       console.log(error, "someting is wrong");
     }
